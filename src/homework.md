@@ -6,3 +6,6 @@
 -listen to port 7777
 -- Make Request handlers for './test ' like that
 - install nodemon and update script inside package.json
+- play with routes and route extensions
+-- order of the route matter a lot
+- write logic to handle get, post, put, patch , delete api call and test to postman
