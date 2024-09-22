@@ -9,3 +9,8 @@
 - play with routes and route extensions
 -- order of the route matter a lot
 - write logic to handle get, post, put, patch , delete api call and test to postman
+
+- explore routing and use of ?, +, {}, * in the routes
+- use the regex in routes
+-Reading the query params in the route
+-Reading the dyamics routes

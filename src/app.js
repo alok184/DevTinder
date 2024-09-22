@@ -39,6 +39,29 @@ app.delete("/deletedata", (req, res)=>{
     res.send("dellete user data")
 });
 
+// advance routing
+//it's will work /ac, /abc 
+app.get("/ab?c", (req, res)=>{
+    res.send("advance route re baba");
+});
+// as many c we can write like xyyyyz route will work but u can't write abcddd or abbcd , or like that
+
+app.get("/xy+z", (req, res)=>{
+    res.send("advance route re baba");
+});
+
+// here bc is optional  ad, abcd all work not work acd
+app.get('/a(bc)?d', (req, res)=>{
+    res.send("here optional route")
+})
+
+/// red the query parma
+// set dyamics params
+//dymaics route
+app.get("/user1/:userid/:name", (req, res)=>{
+    console.log(req.params);
+    res.send({firstName : "Alok", lastName:"Kumar"})
+})
 
 
 
