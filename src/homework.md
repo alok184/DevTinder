@@ -14,3 +14,8 @@
 - use the regex in routes
 -Reading the query params in the route
 -Reading the dyamics routes
+
+-- Multiple route handlers-play with the code
+- next()
+-> next function and errors along with res.send();
+--app.use(("/route), rh1, [rh2, rh3], rh4)
