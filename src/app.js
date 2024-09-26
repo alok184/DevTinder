@@ -116,6 +116,25 @@ app.post("/user/login", (req, res)=>{
 })
 
 // error handlers;
+app.get('/getuserdata', (req, res)=>{
+    // write some logic for db call and get user data what if some error with the code
+    // what if some error
+    // this is good ways
+    try{
+        throw new Error("hkwekhewke")
+        res.send("user data")
+    }catch(err){
+        res.status(500).send("some error")
+    }
+     
+});
+app.use("/", (err, req, res, next) => {
+    if(err){
+        // log your error 
+        res.status(500).send("Something went wrong");
+    }
+   
+});
 
 
 
