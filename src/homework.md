@@ -26,3 +26,8 @@
 
 - write the dummy auth middleware for admin
 - write the dummy auth middleware for all user route
+-- connect your application to database
+- create a user Userschema and user model
+- create post /singup api to add data to database
+- push some documents using Apis call from postman
+-- error handle useing try catch 
