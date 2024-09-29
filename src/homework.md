@@ -36,4 +36,7 @@
 -- Make singup api dyamics to recive data from the end user
 -- user.findone() with dublicate emilid which object will return and why .?
 - Api Get user by ID
-
+- Create delete api
+-- Update data of  the user ----
+-- Create a update a user
+-explore the mongooose for model method
