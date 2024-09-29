@@ -40,3 +40,6 @@
 -- Update data of  the user ----
 -- Create a update a user
 -explore the mongooose for model method
+- what are options in a model.findOneAndUpdate method explore more about it
+
+- Update the user by email Id
