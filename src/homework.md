@@ -31,3 +31,9 @@
 - create post /singup api to add data to database
 - push some documents using Apis call from postman
 -- error handle useing try catch 
+-- js object vs Json (Diff)
+--Add the express.json(Middleware) to your app
+-- Make singup api dyamics to recive data from the end user
+-- user.findone() with dublicate emilid which object will return and why .?
+- Api Get user by ID
+
