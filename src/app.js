@@ -76,6 +76,50 @@ app.get("/getallUserData", async(req, res)=>{
     }
 });
 // delete user 
+app.delete("/deleteuserbyId", async(req, res)=>{
+    const userId=req.body.userId;
+    try{
+        const deleteuserbyid=await User.findByIdAndDelete(userId);
+        res.send("user deleted successfully")
+    }
+    catch(err){
+        res.status(404).send("something went wrong")
+    }
+});
+
+// Update api (user Update by id)
+app.patch("/updateuserById", async(req, res)=>{
+    const userId=req.body.userId;
+    const data=req.body;
+    try{
+    //    const UpdateData=await User.findByIdAndUpdate(userId, data);
+    // 2nd 
+    const UpdateData=await User.findByIdAndUpdate({_id:userId}, data)
+       res.send("user Data Updated Successfully✈️")
+    }
+    catch(err){
+        res.status(404).send("Something went worng")
+    }
+});
+
+
+// Update Update by emailid
+app.patch("/updatedByEmailId", async (req, res) => {
+    const emailId = req.body.emailId;
+    const data = req.body;
+    try {
+        console.log("Email ID:", emailId); // Debugging logs
+        console.log("Data to update:", data);
+
+        // Using findOneAndUpdate to update by emailId
+        const updatedUser = await User.findOneAndUpdate({ emailId: emailId }, data);
+        res.send("User updated successfully");
+    } catch (err) {
+        console.error(err); // Log the error for debugging
+        res.status(500).send("Something went wrong");
+    }
+});
+
 
 
 
