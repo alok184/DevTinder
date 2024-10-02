@@ -1,6 +1,7 @@
 
 // import the define the Schema
 const mongoose=require('mongoose')
+const validator=require('validator')
 const userSchema= new  mongoose.Schema({
     firtsName:{
         type:String,
@@ -33,13 +34,15 @@ const userSchema= new  mongoose.Schema({
         lowercase:true,
         trim:true,
         required:[true, 'Email is Required'],
-        unique:[true, "Email Id should be unique"]
+        unique:[true, "Email Id should be unique"],
+    
     },
     password:{
         type:String,
         required:[true, 'Password is required'],
         trim:true,
-        unique:true
+        unique:true,
+      
     },
     about:{
         type:String,

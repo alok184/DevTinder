@@ -52,3 +52,5 @@
 
 - Add Api level validation on patch request and sinUp post Api
 -  Data sanitization Add Api validation for each field
+-- install validator
+-Explore the validator function 

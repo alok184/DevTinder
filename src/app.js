@@ -27,23 +27,23 @@ const app=express();
 //     }
 // })
 
-// make the api dyamics
-app.post("/singup", async(req, res)=>{
-    // post the static data in mongodb
-     /// create new instance
-     const user=new User(req.body)
-     console.log(req.body);
-    //    nest way to handle the error 
-    try{
-        await user.save()
-        res.send("Singup has been done Successfully")
-    }
-    catch(err){
-        res.status(401).send("something wents worng", + err)
+// make the api dyamics --------------------
+app.post("/signup", async (req, res) => {
+    // Create a new instance of the User model with the request body
+    const user = new User(req.body);
+    console.log(req.body); // Logging the incoming data
+    
+    // Best way to handle the error
+    try {
+        await user.save(); // Save the user to the database
+        res.status(201).send("Signup has been done successfully"); // Send success response
+    } catch (err) {
+        res.status(401).send(`Something went wrong: ${err.message}`); // Send error response with detailed message
     }
 });
 
-// get the data by emailid
+
+// get the data by emailid -------------------
  app.get("/user", async(req, res)=>{
     const userEmail=req.body.emailId;
     console.log(userEmail);
@@ -75,7 +75,7 @@ app.get("/getallUserData", async(req, res)=>{
         res.status(401).send("something went wrong")
     }
 });
-// delete user 
+// delete user ----------------------
 app.delete("/deleteuserbyId", async(req, res)=>{
     const userId=req.body.userId;
     try{
@@ -87,7 +87,7 @@ app.delete("/deleteuserbyId", async(req, res)=>{
     }
 });
 
-// Update api (user Update by id)
+// Update api (user Update by id) ------------
 app.patch("/updateuserById/:userId", async (req, res) => {
     const userId = req.params?.userId; // Get userId from route params
     const data = req.body; // Data to update
@@ -126,10 +126,7 @@ app.patch("/updateuserById/:userId", async (req, res) => {
     }
 });
 
-
-
-
-// Update Update by emailid
+// Update Update by emailid ------------------
 app.patch("/updatedByEmailId", async (req, res) => {
     const emailId = req.body.emailId;
     const data = req.body;
