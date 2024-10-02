@@ -49,3 +49,6 @@
 -create a custome validate fun for gender
 -imporve the dev schema - put all  appopiate validations on each field in schema
 - Add timestanps to the userschema
+
+- Add Api level validation on patch request and sinUp post Api
+-  Data sanitization Add Api validation for each field

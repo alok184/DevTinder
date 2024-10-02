@@ -88,19 +88,45 @@ app.delete("/deleteuserbyId", async(req, res)=>{
 });
 
 // Update api (user Update by id)
-app.patch("/updateuserById", async(req, res)=>{
-    const userId=req.body.userId;
-    const data=req.body;
-    try{
-    //    const UpdateData=await User.findByIdAndUpdate(userId, data);
-    // 2nd 
-    const UpdateData=await User.findByIdAndUpdate({_id:userId}, data)
-       res.send("user Data Updated Successfully✈️")
-    }
-    catch(err){
-        res.status(404).send("Something went worng")
+app.patch("/updateuserById/:userId", async (req, res) => {
+    const userId = req.params?.userId; // Get userId from route params
+    const data = req.body; // Data to update
+
+    try {
+        // Allowed fields for update
+        const Allow_UserData = [ "age", "gender", "about", "imageurl", "phoneNumber", "skills"];
+        
+        // Validate if all provided fields are allowed
+        const isAllowUsertoUpdate = Object.keys(data).every((k) => Allow_UserData.includes(k));
+        if (!isAllowUsertoUpdate) {
+            throw new Error("Update not allowed for some fields");
+        }
+
+        // Validate if 'skills' array has more than 10 elements
+        if (data.skills && data.skills.length > 10) {
+            throw new Error("Skills can't be more than 10");
+        }
+
+        // Update user data by userId
+        const UpdateData = await User.findByIdAndUpdate(userId, data, {
+            returnDocument: 'after', // Return the updated document
+            runValidators: true // Apply schema validators during update
+        });
+
+        // If user not found
+        if (!UpdateData) {
+            return res.status(404).send("User not found");
+        }
+
+        // Send success response
+        res.send("User data updated successfully ✈️");
+    } catch (err) {
+        console.error(err); // Log the error for debugging
+        res.status(400).send({ error: err.message }); // Send detailed error message
     }
 });
+
+
 
 
 // Update Update by emailid

@@ -45,7 +45,7 @@ const userSchema= new  mongoose.Schema({
         type:String,
         default:"About is by defult"
     },
-    skill:{
+    skills:{
         type:[String]
     },
     phoneNumber:{
