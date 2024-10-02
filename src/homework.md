@@ -43,3 +43,9 @@
 - what are options in a model.findOneAndUpdate method explore more about it
 
 - Update the user by email Id
+- explore shemetype options form the doc
+- add require, unique, lowercase, min, max, minlength, trim
+-add defult value
+-create a custome validate fun for gender
+-imporve the dev schema - put all  appopiate validations on each field in schema
+- Add timestanps to the userschema
