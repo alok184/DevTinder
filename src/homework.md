@@ -54,3 +54,7 @@
 -  Data sanitization Add Api validation for each field
 -- install validator
 -Explore the validator function 
+- Never trust req.body
+- validate data in singup api
+- install bcrypt package
+-create a password hash using bcrypt.hash and save the user with encrypted password

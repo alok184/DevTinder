@@ -1,11 +1,16 @@
 const express=require('express');
 // required database file
-const connectdb=  require("./config/database")
+const connectdb=  require("./config/database");
 const app=express(); 
- const User=require("./models/user")
+ const User=require("./models/user");
 //  add middleware express to recived the data in json and save to js object
  app.use(express.json());
-
+//  extract the validation for singup 
+const {ValidateSingupData}=require("./utils/validate");
+// extract the bcrypt
+const bcrypt=require('bcrypt');
+// validatpr
+const validator=require("validator")
 
 // create api (singup)✈️ ...
 // app.post("/singup", async(req, res)=>{
@@ -29,19 +34,61 @@ const app=express();
 
 // make the api dyamics --------------------
 app.post("/signup", async (req, res) => {
-    // Create a new instance of the User model with the request body
-    const user = new User(req.body);
-    console.log(req.body); // Logging the incoming data
-    
     // Best way to handle the error
-    try {
+    try { 
+        /// extract the passowrd
+        const{firtsName,lastName,emailId, password}=req.body;
+        // validate the data -----
+        ValidateSingupData(req)
+        // bcrypt the passowrd ----
+        const hashPassword=  await  bcrypt.hash(password, 10)
+        console.log(hashPassword);
+         // Create a new instance of the User model with the request body
+            // const user = new User(req.body);
+            // or best way to extract 
+            const user=new User({
+                firtsName,
+                lastName,
+                emailId,
+                password:hashPassword
+            });
         await user.save(); // Save the user to the database
         res.status(201).send("Signup has been done successfully"); // Send success response
     } catch (err) {
-        res.status(401).send(`Something went wrong: ${err.message}`); // Send error response with detailed message
+        res.status(401).send("Error :" +err.message); // Send error response with detailed message
     }
 });
 
+// login api ----
+app.post("/login", async (req, res)=>{
+   try{
+      // extract the userName, and password
+      const{emailId, password}=req.body;
+       if(!validator.isEmail(emailId)){
+        throw new Error("Email Id is Invalid")
+       }
+      const user= await User.findOne({emailId:emailId});
+      console.log("here user ", user);
+      if(!user){
+        throw new Error("invalid credentails")
+      }
+      // check password also
+      if(!validator.isStrongPassword(password)){
+        throw new Error("Plese Enter a strong password")
+      }
+      console.log("user password", user.password);
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+   
+      if(isPasswordValid){
+        res.send("Login successfully")
+      }else{
+        res.status(404).send("invalid credentails")
+      }
+   }
+   catch(err){
+    res.status(404).send("Error:" +err.message)
+   }
+});
 
 // get the data by emailid -------------------
  app.get("/user", async(req, res)=>{

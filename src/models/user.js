@@ -18,7 +18,7 @@ const userSchema= new  mongoose.Schema({
     },
     age :{
         type:Number,
-        required:[true, 'Age is required'],
+       
         trim:true
     },
     gender:{
@@ -41,7 +41,7 @@ const userSchema= new  mongoose.Schema({
         type:String,
         required:[true, 'Password is required'],
         trim:true,
-        unique:true,
+        unique:[true,"password should be unique"]
       
     },
     about:{
