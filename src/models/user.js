@@ -2,6 +2,8 @@
 // import the define the Schema
 const mongoose=require('mongoose')
 const validator=require('validator')
+const jwt= require('jsonwebtoken')
+const bcrypt=require("bcrypt")
 const userSchema= new  mongoose.Schema({
     firtsName:{
         type:String,
@@ -63,7 +65,25 @@ const userSchema= new  mongoose.Schema({
 },
 {
     timestamps:true
-})
+});
+
+
+// best way to write ---- or you can write direct in login  api
+userSchema.methods.getJWT=async function(){
+    const user=this;
+    const token=await jwt.sign({_id:user._id}, "DevTinder@8786991" , {
+            expiresIn:'1d'
+        });
+    return token;
+};
+
+// u can write for compare the bcrypt passowrd 
+userSchema.methods.validatePassword=async function(passwordInputByUser){
+ const user=this;
+ const passowrdHash=user.password;
+ const isPasswordValid = await bcrypt.compare(passwordInputByUser,passowrdHash);
+ return isPasswordValid;
+}
 
 // create mongoose module
 // const User= mongoose.model("user", userSchema);

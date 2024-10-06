@@ -58,3 +58,19 @@
 - validate data in singup api
 - install bcrypt package
 -create a password hash using bcrypt.hash and save the user with encrypted password
+- create a login api
+-- comapre the password and throw errors if email or passowrd is invaild
+-- write code for implement the token logic  (in login)
+- insatll middleware of npm i cookie-parser
+-- validate the cookies in profile API
+- install jsonwebtoken
+-// in login api create a jwt token
+-// validate the profile  (Read profile) and the logged in user
+
+
+// userAuth middleware
+// add the userAuth middleware in profile Api and new send connection request api
+// set the expire of jwt token and cookies to 7 days
+
+-- create userSchema method to get jwt 
+-- create userSchema method to compare password and take the passwordinput
