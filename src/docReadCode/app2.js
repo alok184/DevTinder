@@ -1,7 +1,7 @@
 const express=require('express');
 const app=express(); 
 // import middleware auth
-const {AdminAuth, userAuth}=require('./middlewares/auth');
+const {AdminAuth, userAuth}=require('../middlewares/auth');
 
 // app.use("/use", (req, res)=>{
 //     res.send("route handler1")

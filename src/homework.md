@@ -74,3 +74,8 @@
 
 -- create userSchema method to get jwt 
 -- create userSchema method to compare password and take the passwordinput
+
+--explore /read doc for express.roueter
+-Create Router floder for managing all api
+- create authRouter, ProfileRoute, requestRouter
+-import these Router in app.js
