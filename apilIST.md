@@ -8,7 +8,7 @@
 ## ProfileRouter
 -get/profile/view
 -patch/profile/edit
--patch/profile/passowrd
+-patch/profile/passowrd  // Update the passowrd the password
 
 ## ConnectionRequestRouter
 -post/request/send/intersted/:userId

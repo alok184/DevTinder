@@ -10,6 +10,22 @@ const ValidateSingupData = (req)=>{
         throw new Error("Please Enter a strong password.!")
      }
 };
+
+// validation for profile edit
+
+
+
+
+const validateProfleEditData = (req) => {
+   const AllowField = ["firtsName", "lastName"];
+   const isAllowed = Object.keys(req.body).every(field => AllowField.includes(field));
+   return isAllowed;
+};
+
+
+
+
 module.exports={
-    ValidateSingupData
+    ValidateSingupData,
+    validateProfleEditData
 }
