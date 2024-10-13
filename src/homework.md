@@ -79,3 +79,23 @@
 -Create Router floder for managing all api
 - create authRouter, ProfileRoute, requestRouter
 -import these Router in app.js
+
+
+-- Read more about index in mongoose
+-Read compond index
+-why need index 
+- what is the advantage and disadvange of indexs
+-show ! or query in mongoose
+-read more about logical query 
+- schema.pre("save" )   function implement that ---✈️✈️
+
+
+-create shema of connection request
+-Add proper validation 
+- write the query for send the connection request
+- thing about all corner cases
+
+-Create the api for connaction request with validation (Build own logic)
+
+-read more about logical query 
+- schema.pre("save" )   function implement that ---✈️✈️

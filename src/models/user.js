@@ -43,6 +43,7 @@ const userSchema= new  mongoose.Schema({
         type:String,
         required:[true, 'Password is required'],
         trim:true,
+        // here unique is alos indexes 
         unique:[true,"password should be unique"]
       
     },

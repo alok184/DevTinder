@@ -13,6 +13,11 @@
 ## ConnectionRequestRouter
 -post/request/send/intersted/:userId
 -psot/request/send/ihnore/:userId
+--both api same make dynamics
+
+
+
+
 -post/requets/review/accepted/:reqId
 -post/request/review/rejected/:reqId
 
