@@ -13,10 +13,12 @@ app.use(cookiesParser());
 const authRouter=require('./Router/auth');
 const profileRouter=require('./Router/profile');
 const requestRoute=require("./Router/reuest")
+const userRoute=require('./Router/user')
 
 app.use('/',authRouter);
 app.use('/', profileRouter);
-app.use('/', requestRoute)
+app.use('/', requestRoute);
+app.use('/', userRoute);
 
 
 

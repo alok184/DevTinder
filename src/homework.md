@@ -99,3 +99,10 @@
 
 -read more about logical query 
 - schema.pre("save" )   function implement that ---✈️✈️
+
+
+--write the code with proper validation for post -post/request/review/status/:reqId
+--Thought process - POST  Vs GET
+
+-- Read About reg and Populate
+- Create  GET /user/requests/received with all the checks ✈️

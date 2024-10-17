@@ -17,14 +17,15 @@
 
 
 
-
+-- both api logic is same 
 -post/requets/review/accepted/:reqId
 -post/request/review/rejected/:reqId
 
-## UserRuquestConnection 
--Get/connections
--Get/request/:recived
--Get/feed-gets you the profile of other users
+## UserRuquestConnection  (user)
+-Get  user/request/:recived  -done (user)
+-Get  user/connections
+
+-Get  user/feed-gets you the profile of other users
 
 
 

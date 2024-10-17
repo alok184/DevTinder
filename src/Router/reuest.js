@@ -25,7 +25,6 @@ requestRoute.post("/request/send/:status/:touserId",userAuth, async(req, res)=>{
            $or:[
             {fromuserId, touserId},
             {fromuserId:touserId, touserId:fromuserId}
-
            ],
            });
          if(existingConnectionRequest){
@@ -47,4 +46,40 @@ requestRoute.post("/request/send/:status/:touserId",userAuth, async(req, res)=>{
         res.status(404).send("something wents worng")
     }
 });
+
+// api (connection request review (accepted or rejected))
+requestRoute.post('/request/review/:status/:requestId', userAuth, async(req, res)=>{
+   try{
+      const isloginuser=req.user;
+      //extract the parms
+      const{status, requestId}=req.params;
+      // validate the status ::
+      const isAllowedStatus=['Accepted', 'Rejected'];
+      if(!isAllowedStatus.includes(status)){
+         return res.status(404).json({message:"Status in not valid try agin . !!"})
+      };
+      const check_status_parsent_id= await conectionRequest.findOne({
+         _id:requestId,
+         touserId:isloginuser._id,
+         status:'Interested'
+      });
+      if(!check_status_parsent_id){
+         return res.status(404).send("connection request not found . !!")
+      }
+      check_status_parsent_id.status=status
+      const data=check_status_parsent_id.save();
+      res.json({message:"Connection request has been done successfully . !", data})
+
+       // request id should be valide 
+    // check the  id is present or not like Alok=>Elone
+    // loginuser= touserid (true or not ) 
+   // status:interested
+    // request id should be valide 
+
+   }catch(err){
+      res.send("Error" + err.message)
+   }
+})
+
+
 module.exports=requestRoute;

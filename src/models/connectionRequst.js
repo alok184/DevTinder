@@ -2,11 +2,13 @@ const mongoose=require("mongoose")
 const conectionRequestSchema= new mongoose.Schema({
     fromuserId:{
         type:mongoose.Schema.ObjectId,
-        require:true
+        require:true,
+        ref:'User'  // refer to the user collection 
     },
     touserId:{
        type: mongoose.Schema.ObjectId,
-       require:true
+       require:true,
+       ref:'User'
     },
    
     status:{
