@@ -106,3 +106,20 @@
 
 -- Read About reg and Populate
 - Create  GET /user/requests/received with all the checks ✈️
+
+$nin means not in array
+$ne means not present 
+.. Logic for get /feedapi
+-- explore the $nin, $ne ,$and and read all other query operatortors
+--Pagination
+
+-- Build Pagination
+:NOTES::_
+ Api like  /user/feed?page=1&limit=10 like that
+ meeas
+  /user/feed?page=1&limit=10  -> (1-10) => .skip(0) & .limit(10)
+ /user/feed?page=2&limit=10  -> (11-20) =>.skip(10) & .limit(10)
+  /user/feed?page=3&limit=10  -> (21-31 ) => skip(20) & .limit(10)                 data  like that show the data 
+  -- here mongose build .skip() & .limite()
+  -- skip fromaul somethimg like that
+  skip=(page-1)* limite; (3-1)*10= 20 => /user/feed?page=3&limit=10  -> (21-31 )
