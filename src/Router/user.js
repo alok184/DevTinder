@@ -96,8 +96,8 @@ userRoute.get('/user/feed', userAuth, async(req, res)=>{
         console.log("find feed data", findfeeddatafromusermodels);
 
 
-        console.log(findAllconnectionRequest);
-        res.send(findfeeddatafromusermodels)
+     
+        res.json({data:findfeeddatafromusermodels})
     }catch(err){
         res.status(400).json({message: "Error:"+ err.message})
     }
